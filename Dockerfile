@@ -40,6 +40,6 @@ LABEL maintainer="${USER_NAME} <${USER_EMAIL}>" \
         org.label-schema.build-date=$BUILD_DATE \
         org.label-schema.version=$VERSION
 COPY --from=builder /app/build  /usr/share/nginx/html
-COPY default.conf /etc/nginx/conf.d/default.conf
+COPY ./scripts/default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
