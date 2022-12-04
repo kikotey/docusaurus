@@ -1,9 +1,14 @@
 version: 2
 updates:
-  - package-ecosystem: github-actions
-    directory: '/'
+  # Maintain dependencies for Docker base image
+  - package-ecosystem: "docker"
+    directory: "/" # Location of package manifests
     schedule:
-      interval: weekly
-    open-pull-requests-limit: 99
-    labels:
-      - 'pr: dependencies'
+      interval: "daily"
+  
+  # Maintain dependencies for Github Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  
