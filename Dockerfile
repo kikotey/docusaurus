@@ -16,7 +16,7 @@ RUN rm -Rf ./examples/classic-typescript/docs \
 COPY ./examples/classic-typescript/. ./
 COPY ./markdowns/docs ./
 COPY ./markdowns/blog ./
-COPY ./scripts/. ./
+COPY ./configurations/. ./
 
 RUN yarn install
 RUN yarn run build
@@ -40,6 +40,6 @@ LABEL maintainer="${USER_NAME} <${USER_EMAIL}>" \
         org.label-schema.build-date=$BUILD_DATE \
         org.label-schema.version=$VERSION
 COPY --from=builder /app/build  /usr/share/nginx/html
-COPY ./scripts/default.conf /etc/nginx/conf.d/default.conf
+COPY ./configurations/default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
